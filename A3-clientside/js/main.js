@@ -14,22 +14,35 @@ const navTo = url => {
 
 function fetchHtml(data) {
   const images = ['./img/dog.jpg', './img/yuhan.jpg', './img/yang.jpg', './img/shui.jpg', './img/dog2.jpg']
-
   return `
 	  <div class="fundraiser-card" id="fundraiser-card">
       <img src="${images[data.FUNDRAISER_ID - 1]}" alt="" />
       <div class="title">${data.CAPTION}</div>
       <div class="details">
-        <div class="flex-between">
-          <div style="width:25%">Organizer: </div> <div style="width:25%;" class="center">${data.ORGANIZER}</div>
-          <div style="width:25%">Category : </div> <div style="width:25%;" class="center">${data.CATEGORY_NAME}</div>
-        </div>
-        <div style="width:100%;display:flex"><div style="width:50%">Target financing:</div> <div style="width:50%"> $${data.TARGET_FUNDING}</div></div>
-        <div style="width:100%;display:flex"><div style="width:50%">Current funds:</div> <div style="width:50%"> $${data.CURRENT_FUNDING}</div></div>
-        <div style="width:100%;display:flex"><div style="width:50%">City: </div><div>${data.CITY}</div></div>
-        <div style="width:100%;display:flex"><div style="width:50%">Event:</div> <div class="${data.ACTIVE === 0 ? 'hRed' : ''}">${
-    data.ACTIVE === 0 ? 'Finished' : 'Underway'
-  }</div></div>
+          <div class="group">
+            <div>City:</div>
+            <div>${data.CITY}</div>
+          </div>
+          <div class="group">
+            <div>Organizer:</div>
+            <div>${data.ORGANIZER}</div>
+          </div>
+          <div class="group">
+            <div>Category:</div>
+            <div>${data.CATEGORY_NAME}</div>
+          </div>
+          <div class="group">
+            <div>Current funds:</div>
+            <div>${data.CURRENT_FUNDING}</div>
+          </div>
+          <div class="group">
+            <div>Target financing:</div>
+            <div>${data.TARGET_FUNDING}</div>
+          </div>
+          <div class="group">
+            <div>Active:</div>
+            <a class="${data.ACTIVE === 0 ? 'hRed' : ''}">${data.ACTIVE === 0 ? 'Inactive' : 'Active'}</a>
+          </div>
       </div>
 	  </div>
 	`
@@ -118,7 +131,7 @@ To make this vision a reality, we need a new property that meets specific requir
   ]
   return `
 	<div class="container">
-		<img src="${images[data.FUNDRAISER_ID - 1]}" />
+		    <img src="${images[data.FUNDRAISER_ID - 1]}" />
         <h1 id="title">${data.CAPTION}</h1>
         <div class="details">
             <p><strong>ORGANIZER:</strong> <span id="organizer">${data.ORGANIZER}</span></p>
@@ -126,16 +139,14 @@ To make this vision a reality, we need a new property that meets specific requir
             <p><strong>CURRENT FUNDING:</strong> <span id="currentFunding">${data.CURRENT_FUNDING}</span></p>
             <p><strong>CITY:</strong> <span id="city">${data.CITY}</span></p>
             <p><strong>CATEGORY:</strong> <span id="eventStatus">${data.CATEGORY_NAME}</span></p>
-			<p><strong>ACTIVE:</strong> <span id="category" class="${data.ACTIVE === 0 ? 'hRed' : ''}">${data.ACTIVE === 0 ? 'Over' : 'Underway'}</span></p>
+			      <p><strong>ACTIVE:</strong> <span id="category" class="${data.ACTIVE === 0 ? 'hRed' : ''}">${data.ACTIVE === 0 ? 'Inactive' : 'Active'}</span></p>
         </div>
   			<a href="#" class="button" onclick="alert('This feature is under contruction')">Donate</a>
         <div class="description">
           ${test[data.FUNDRAISER_ID - 1]}
         </div>
-
-        <div class="donateButton">
-		</div>
-    </div>
+        <div class="donateButton"></div>
+  </div>
 	`
 }
 

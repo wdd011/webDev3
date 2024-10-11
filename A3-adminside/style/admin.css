@@ -64,7 +64,7 @@ header {
 section {
   padding: 20px;
 }
-section #fundraiser-title {
+section > div {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -76,7 +76,6 @@ section .action-button {
   padding: 10px 20px;
   cursor: pointer;
   font-size: 16px;
-  float: right;
 }
 
 .action-button:hover {
@@ -135,7 +134,7 @@ th {
 
 .modal-content {
   background-color: #fff;
-  margin: 15% auto;
+  margin: 10% auto;
   padding: 20px;
   border-radius: 8px;
   width: 40%;
@@ -161,6 +160,15 @@ form input {
   margin-top: 5px;
 }
 
+form textarea {
+  width: 100%;
+  max-width: 100%;
+  min-width: 100%;
+  max-height: 400px;
+  padding: 16px;
+  font-size: 14px;
+}
+
 form button {
   margin-top: 20px;
   background-color: #28a745;
@@ -172,4 +180,12 @@ form button {
 
 form button:hover {
   background-color: #218838;
+}
+
+.submit-buts {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 32px;
 }

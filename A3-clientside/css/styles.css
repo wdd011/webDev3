@@ -143,6 +143,11 @@ body {
   position: relative;
   margin: 0 0 26px;
   overflow: hidden;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.fundraiser-card:hover {
+  box-shadow: 0 4px 20px rgba(156, 51, 83, 0.6); /* 鼠标悬停时的阴影效果 */
 }
 
 .fundraiser-card img {
@@ -151,17 +156,21 @@ body {
 
 .fundraiser-card .title {
   margin-top: 8px;
-  color: #5d5d5d;
   font-size: 16px;
   margin-left: 10px;
   margin-right: 10px;
   text-align: left;
+  font-weight: 700;
+  overflow: hidden; /* 隐藏超出部分 */
+  white-space: nowrap; /* 强制在同一行显示 */
+  text-overflow: ellipsis; /* 超出部分显示省略号 */
 }
 .fundraiser-card .details {
   width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  gap: 8px;
   padding: 16px;
 }
 .fundraiser-card .details .flex-com {
@@ -176,6 +185,13 @@ body {
   line-height: 18px;
   border-radius: 2px;
   max-height: 66px;
+}
+.fundraiser-card .details .group {
+  display: grid;
+  grid-template-columns: 40% 60%;
+}
+.fundraiser-card .details .group > div:first-child {
+  /* text-align: right; */
 }
 .hRed {
   color: red;
@@ -342,7 +358,6 @@ input {
 .details {
   width: 1200px;
   margin: 0 auto;
-  margin-top: 120px;
 }
 .details .details-content .container {
   width: 100%;

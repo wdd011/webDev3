@@ -1,9 +1,8 @@
 const apiUrl = 'https://24275293.it.scu.edu.au' // 替换为实际 API URL
 
 // DOM Elements
-const fundraiserTable = document.getElementById('fundraiser-table')
+const table = document.getElementById('table')
 const createModal = document.getElementById('modal')
-const deleteModal = document.getElementById('confirm-delete-modal')
 const closeCreateButton = createModal.querySelector('.close-button')
 const openCreateModalButton = document.getElementById('open-create-modal')
 const confirmDeleteButton = document.getElementById('confirm-delete-button')
@@ -23,20 +22,23 @@ function getFundraisers() {
   fetch(apiUrl + '/search')
     .then(response => response.json())
     .then(data => {
-      fundraiserTable.innerHTML = ''
+      table.innerHTML = ''
       data.forEach(fundraiser => {
         const row = document.createElement('tr')
         row.innerHTML = `
-                    <td>${fundraiser.id}</td>
-                    <td>${fundraiser.name}</td>
-                    <td>${fundraiser.description}</td>
-                    <td>${fundraiser.targetAmount}</td>
+                    <td>${fundraiser.FUNDRAISER_ID}</td>
+                    <td>${fundraiser.ORGANIZER}</td>
+                    <td>${fundraiser.CAPTION}</td>
+                    <td>${fundraiser.TARGET_FUNDING}</td>
+                    <td>${fundraiser.CURRENT_FUNDING}</td>
+                    <td>${fundraiser.CITY}</td>
+                    <td>${fundraiser.ACTIVE ? 'Yes' : 'No'}</td>
                     <td>
-                        <button class="action-button" onclick="openModal('edit', ${fundraiser.id})">Edit</button>
-                        <button class="cancel-button" onclick="openDeleteModal(${fundraiser.id})">Delete</button>
+                        <button class="action-button" onclick="openModal(${fundraiser.FUNDRAISER_ID})">Edit</button>
+                        <button class="cancel-button" onclick="openDeleteModal(${fundraiser.FUNDRAISER_ID})">Delete</button>
                     </td>
                 `
-        fundraiserTable.appendChild(row)
+        table.appendChild(row)
       })
     })
 }
@@ -44,8 +46,8 @@ function getFundraisers() {
 // Open Create or Edit Modal
 function openModal(type, id = null) {
   const modalTitle = document.getElementById('modal-title')
-  const saveButton = document.getElementById('save-button')
-  const form = document.getElementById('fundraiser-form')
+  const saveButton = document.getElementById('saveButton')
+  const form = document.getElementById('form')
 
   currentFundraiserId = id
 
@@ -57,20 +59,20 @@ function openModal(type, id = null) {
   } else if (type === 'edit') {
     modalTitle.textContent = 'Edit Fundraiser'
     saveButton.textContent = 'Update'
-    fetch(`${apiUrl}/${id}`)
-      .then(response => response.json())
-      .then(fundraiser => {
-        document.getElementById('name').value = fundraiser.name
-        document.getElementById('description').value = fundraiser.description
-        document.getElementById('target').value = fundraiser.targetAmount
-      })
+    // fetch(`${apiUrl}/${id}`)
+    //   .then(response => response.json())
+    //   .then(fundraiser => {
+    //     document.getElementById('name').value = fundraiser.name
+    //     document.getElementById('description').value = fundraiser.description
+    //     document.getElementById('target').value = fundraiser.targetAmount
+    //   })
     form.onsubmit = updateFundraiser
   }
   createModal.style.display = 'block'
 }
 
 // Create a new fundraiser
-function createFundraiser(event) {
+async function createFundraiser(event) {
   event.preventDefault()
   const formData = new FormData(event.target)
 
@@ -94,21 +96,24 @@ function createFundraiser(event) {
 function updateFundraiser(event) {
   event.preventDefault()
   const formData = new FormData(event.target)
+  // const fileInput = document.getElementById('fileUpload')
+  // const base64File = await handleFileUpload(fileInput)
+  // console.log(base64File)
+  // const updatedFundraiser = {
+  //   name: formData.get('name'),
+  //   description: formData.get('description'),
+  //   targetAmount: formData.get('target'),
+  // }
 
-  const updatedFundraiser = {
-    name: formData.get('name'),
-    description: formData.get('description'),
-    targetAmount: formData.get('target'),
-  }
-
-  fetch(`${apiUrl}/${currentFundraiserId}`, {
-    method: 'PUT',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(updatedFundraiser),
-  }).then(() => {
-    closeModal()
-    getFundraisers()
-  })
+  // fetch(`${apiUrl}/${currentFundraiserId}`, {
+  //   method: 'PUT',
+  //   headers: { 'Content-Type': 'application/json' },
+  //   body: JSON.stringify(updatedFundraiser),
+  // }).then(() => {
+  //   closeModal()
+  //   getFundraisers()
+  // })
+  // getFundraisers()
 }
 
 // Open the delete confirmation modal
@@ -131,7 +136,6 @@ function deleteFundraiser() {
 // Close any open modal
 function closeModal() {
   createModal.style.display = 'none'
-  deleteModal.style.display = 'none'
 }
 
 // Initial load

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <link>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+	<link rel="stylesheet" href="./style/admin.css">
+  </head>
+  <body>
+	<div class="admin-container">
+        <div class="sidebar">
+            <div class="sidebar-logo">
+                <h2>Admin Panel</h2>
+            </div>
+            <ul>
+                <li><a href="#" class="active">Fundraisers</a></li>
+            </ul>
+        </div>
+        <div class="main-content">
+            <header></header>
+            <section id="fundraiser-list">
+                <div id="fundraiser-title">
+					<h2>All Fundraisers</h2>
+					<button id="open-create-modal" class="action-button">+ Add New Fundraiser</button>
+				</div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Description</th>
+                            <th>Target Amount</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="fundraiser-table">
+                        <!-- Fundraisers will be dynamically added here -->
+                    </tbody>
+                </table>
+            </section>
+        </div>
+    </div>
+
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <h2 id="modal-title">Create Fundraiser</h2>
+            <form id="fundraiser-form">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required><br>
+                <label for="description">Description:</label>
+                <input type="text" id="description" name="description" required><br>
+                <label for="target">Target Amount:</label>
+                <input type="number" id="target" name="target" required><br>
+                <button type="submit" id="save-button">Save</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Confirm Deletion Modal -->
+    <!-- <div id="confirm-delete-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <h2>Confirm Deletion</h2>
+            <p>Are you sure you want to delete this fundraiser?</p>
+            <button id="confirm-delete-button" class="action-button">Delete</button>
+            <button id="cancel-delete-button" class="cancel-button">Cancel</button>
+        </div>
+    </div> -->
+
+    <script src="./js/index.js"></script>
+  </body>
+</html>

@@ -1,20 +1,17 @@
-const apiUrl = 'https://24275293.it.scu.edu.au' // 替换为实际 API URL
+const apiUrl = 'https://localhost:3002'
 
-// DOM Elements
 const table = document.getElementById('table')
 const createModal = document.getElementById('modal')
 const closeCreateButton = createModal.querySelector('.close-button')
 const openCreateModalButton = document.getElementById('open-create-modal')
 const confirmDeleteButton = document.getElementById('confirm-delete-button')
 const cancelDeleteButton = document.getElementById('cancel-delete-button')
-let currentFundraiserId = null // Store the ID of the fundraiser being edited or deleted
+let currentFundraiserId = null
 
-// Open Create Modal
 openCreateModalButton.addEventListener('click', () => {
   openModal('create')
 })
 
-// Close Create Modal
 closeCreateButton.addEventListener('click', closeModal)
 
 // 获取筹款活动
@@ -32,7 +29,7 @@ function getFundraisers() {
                     <td>${fundraiser.TARGET_FUNDING}</td>
                     <td>${fundraiser.CURRENT_FUNDING}</td>
                     <td>${fundraiser.CITY}</td>
-                    <td>${fundraiser.ACTIVE ? 'Yes' : 'No'}</td>
+                    <td>${fundraiser.ACTIVE ? 'Active' : 'Inactive'}</td>
                     <td>
                         <button class="action-button" onclick="openModal(${fundraiser.FUNDRAISER_ID})">Edit</button>
                         <button class="cancel-button" onclick="openDeleteModal(${fundraiser.FUNDRAISER_ID})">Delete</button>

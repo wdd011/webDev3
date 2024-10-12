@@ -151,7 +151,7 @@ th {
 
 form label {
   display: block;
-  margin-top: 10px;
+  margin-top: 14px;
 }
 
 form input {
@@ -188,4 +188,20 @@ form button:hover {
   align-items: center;
   justify-content: center;
   gap: 32px;
+}
+#radio-group {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+#radio-group > div {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+#radio-group input {
+  width: auto;
+}
+#radio-group label {
+  margin-top: 6px;
 }

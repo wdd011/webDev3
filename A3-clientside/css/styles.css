@@ -359,6 +359,9 @@ input {
   width: 1200px;
   margin: 0 auto;
 }
+.details .details-content {
+  margin-top: 140px;
+}
 .details .details-content .container {
   width: 100%;
   display: flex;
@@ -374,4 +377,72 @@ input {
   display: flex;
   gap: 32px;
   flex-wrap: wrap;
+}
+
+.donate-form {
+  margin-top: 90px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.donate-form .donate-content {
+  width: 800px;
+  background-color: white;
+  padding: 48px 32px;
+  box-shadow: 0 4px 10px 0 rgba(156, 51, 83, 0.3);
+  border-radius: 18px;
+}
+
+/* 进度环 */
+#greenLine {
+  animation: greenLine_da 1160ms linear normal forwards;
+}
+
+@keyframes greenLine_da {
+  0% {
+    stroke-dasharray: 0, 226;
+    animation-timing-function: cubic-bezier(0.3, 0.01, 0, 1);
+  }
+  100% {
+    stroke-dasharray: 179.04, 226;
+  }
+}
+
+.donate-content .card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  letter-spacing: 0;
+}
+.donate-content .card img {
+  width: 30%;
+  border-radius: 10px;
+}
+.user-money {
+  margin-top: 32px;
+}
+.user-money form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+.user-money form input {
+  width: 100%;
+  height: 54px;
+  padding: 0 16px;
+  font-size: 32px;
+}
+.user-money form > div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 16px;
+}
+
+.user-money .btns {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

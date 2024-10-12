@@ -141,7 +141,7 @@ To make this vision a reality, we need a new property that meets specific requir
             <p><strong>CATEGORY:</strong> <span id="eventStatus">${data.CATEGORY_NAME}</span></p>
 			      <p><strong>ACTIVE:</strong> <span id="category" class="${data.ACTIVE === 0 ? 'hRed' : ''}">${data.ACTIVE === 0 ? 'Inactive' : 'Active'}</span></p>
         </div>
-  			<a href="#" class="button" onclick="alert('This feature is under contruction')">Donate</a>
+  			<a href="#" class="button" onclick="navTo('./donate.html')">Donate</a>
         <div class="description">
           ${test[data.FUNDRAISER_ID - 1]}
         </div>

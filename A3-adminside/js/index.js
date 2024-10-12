@@ -1,4 +1,4 @@
-const apiUrl = 'https://localhost:3002'
+const apiUrl = 'https://24275293.it.scu.edu.au' //'https://localhost:3002'
 
 const table = document.getElementById('table')
 const createModal = document.getElementById('modal')
